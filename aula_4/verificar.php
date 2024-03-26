@@ -27,9 +27,10 @@ if (
     ";
 
     $enviar = $mysqli->query($sql_query);
+
+
 }
 
 ?> -->
 
 <php
-echo 'oi';

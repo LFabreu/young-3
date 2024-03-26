@@ -26,7 +26,10 @@ main{
     height: 80%;
     width: 30%;
     border-radius: 35px;
-    background-color: rgba(0, 0, 0, 0.301);
+    border: 1px solid gray;
+    background-blend-mode: darken;
+    background-color:   transparent;
+    backdrop-filter: blur(10px);
 }
 
 .conteiner-nome-sobrenome{
