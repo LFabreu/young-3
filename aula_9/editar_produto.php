@@ -1,10 +1,46 @@
 <?php
 include('../conexoes/conexao.php');
-
 session_start();
-$sql = 'SELECT * FROM produtos';
-$resultado = $mysqli->query($sql);
-$nome_user = $_SESSION['user']
+$nome_user = $_SESSION['user'];
+if (isset($_GET['id']));
+{
+    $id = $_GET['id'];
+
+    $sql = "SELECT nome_produto FROM produtos WHERE id='$id'";
+    $resultado = $mysqli->query($sql);
+
+    if($resultado->num_rows > 0)
+    {
+        $row = $resultado->fetch_array();
+        // $nome_produto = $_GET['nome_produto'];
+        // var_dump($nome_produto);
+        // $id_user = $_POST['id_user'];
+    }
+    else
+    {   
+        echo 'Produto não encontrado!';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+{
+    $id = $_POST['id'];
+    $nome_produto = $_POST['nome_produto'];
+    $id_user = $_POST['id_user'];
+
+    $sql = "UPDATE produtos SET nome_produto='$nome' WHERE id='$id'";
+
+    if ($mysqli->query($sql) === TRUE)
+    {
+        header("Location: lista_produtos.php");
+        exit();
+    }
+    else{
+        echo "erro ao atualizar motivo ->" . $mysqli->error;
+    }
+}
+$mysqli->close()
+
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +48,11 @@ $nome_user = $_SESSION['user']
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Produtos</title>
     <link rel="stylesheet" href="./css/style_painel.css">
 </head>
 <body>
-    <main>
+<main>
         <div class="barra_navegacao">
             <h1>
                 Bem Vindo a WishList, <?php echo $nome_user; ?>
@@ -40,7 +76,6 @@ $nome_user = $_SESSION['user']
                     echo '<td>' . $row['id'] . '</td>';
                     echo '<td>' . $row['nome_produto'] . '</td>';
                     echo '<td>' . $row['id_user'] . '</td>';
-                    echo '<td><a href="editar_produto.php?id='. $row['id'] . '">Editar</a> | <a href="deletar_produto.php?id='. $row['id'] . '">Deletar</a>';
                     echo '</tr>';
             }
             }
