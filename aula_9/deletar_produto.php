@@ -9,7 +9,7 @@ if (isset($_GET['id']))
 
     if ($mysqli->query($sql) === TRUE)
     {
-        header('Location: lista_produtos.php');
+        header('Location: painel.php');
         exit();
     }
     else{

@@ -1,20 +1,22 @@
 <?php
 include('../conexoes/conexao.php');
 session_start();
+$sql = 'SELECT * FROM produtos';
 $nome_user = $_SESSION['user'];
+$resultado = $mysqli->query($sql);
+$row = $resultado->fetch_assoc();
 if (isset($_GET['id']));
 {
     $id = $_GET['id'];
 
-    $sql = "SELECT nome_produto FROM produtos WHERE id='$id'";
+    $sql = "SELECT * FROM produtos";
     $resultado = $mysqli->query($sql);
-
     if($resultado->num_rows > 0)
     {
         $row = $resultado->fetch_array();
-        // $nome_produto = $_GET['nome_produto'];
-        // var_dump($nome_produto);
-        // $id_user = $_POST['id_user'];
+        $nome_produto = $row['nome_produto'];
+        $quantidade = $row['quantidade'];
+        $url = $row['url_img'];
     }
     else
     {   
@@ -39,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         echo "erro ao atualizar motivo ->" . $mysqli->error;
     }
 }
-$mysqli->close()
 
 ?>
 
@@ -53,39 +54,31 @@ $mysqli->close()
 </head>
 <body>
 <main>
-        <div class="barra_navegacao">
+        <nav class="barra_navegacao">
             <h1>
                 Bem Vindo a WishList, <?php echo $nome_user; ?>
             </h1>
             <a href="logout.php">
                 LOGOUT
             </a>
-        </div>
+        </nav>
         <table>
         <tr>
-                <th>ID</th>
+                <th>Imagem</th>
                 <th>Nome</th>
-                <th>Valor</th>
                 <th>Quantidade</th>
                 <th>Ações</th>
             </tr>
             <?php
-            if ($resultado->num_rows > 0){
-                while($row = $resultado->fetch_assoc()){
-                    echo '<tr>';
-                    echo '<td>' . $row['id'] . '</td>';
-                    echo '<td>' . $row['nome_produto'] . '</td>';
-                    echo '<td>' . $row['id_user'] . '</td>';
-                    echo '</tr>';
-            }
-            }
-            else{
-                echo '<tr><td colspan="4">Nenhum produto encontrado</td></tr>';
-            }
-
+            
+            echo '<tr>';
+            echo '<td> <img src="' . $url . '"></td>';
+            echo '<td>' . $nome_produto . '</td>';
+            echo '<td>' . $quantidade . '</td>';
+            echo '<td>'  ;
+            echo '</tr>';
             ?>
         </table>
-
     </main>
 </body>
 </html>

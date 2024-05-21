@@ -17,38 +17,40 @@ $nome_user = $_SESSION['user']
 </head>
 <body>
     <main>
-        <div class="barra_navegacao">
+        <nav class="barra_navegacao">
             <h1>
                 Bem Vindo a WishList, <?php echo $nome_user; ?>
             </h1>
             <a href="logout.php">
                 LOGOUT
             </a>
-        </div>
+        </nav>
         <table>
-        <tr>
-                <th>ID</th>
+            <tr>
+                <th>Imagem</th>
                 <th>Nome</th>
                 <th>Valor</th>
                 <th>Quantidade</th>
                 <th>Ações</th>
             </tr>
-            <?php
+            <div class="tabela-info">
+                <?php
             if ($resultado->num_rows > 0){
                 while($row = $resultado->fetch_assoc()){
                     echo '<tr>';
-                    echo '<td>' . $row['id'] . '</td>';
+                    echo '<td> <img src="' . $row['url_img'] . '"></td>';
                     echo '<td>' . $row['nome_produto'] . '</td>';
-                    echo '<td>' . $row['id_user'] . '</td>';
+                    echo '<td>' . $row['valor'] . '</td>';
+                    echo '<td>' . $row['quantidade'] . '</td>';
                     echo '<td><a href="editar_produto.php?id='. $row['id'] . '">Editar</a> | <a href="deletar_produto.php?id='. $row['id'] . '">Deletar</a>';
                     echo '</tr>';
-            }
+                }
             }
             else{
                 echo '<tr><td colspan="4">Nenhum produto encontrado</td></tr>';
             }
-
             ?>
+            </div>
         </table>
 
     </main>

@@ -24,3 +24,20 @@ body{
 a{
     color: white;
 }
+
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+}
+td{
+    padding-left: 70px;
+}
+
+table{
+    padding-top: 30px;
+}
+
+th{
+    padding-left: 70px;
+}
