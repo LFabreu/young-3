@@ -79,13 +79,14 @@ else{
         $quantidade_linhas = $sql_query->num_rows;
         
         if($quantidade_linhas == 1){
-            echo 'oi';
             $usuario = $sql_query->fetch_assoc();
             
             $nome_tabela = $usuario['user'];
             $senha_tabela = $usuario['senha'];
+            $id_user =$usuario['id'];
             
             if($user==$nome_tabela && $password==$senha_tabela){
+                $_SESSION['id_user'] = $id_user;
                 $_SESSION['user'] = $nome_tabela;
                 header("Location: sessao.php");
                 exit();

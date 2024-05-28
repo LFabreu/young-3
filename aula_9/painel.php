@@ -42,7 +42,7 @@ $nome_user = $_SESSION['user']
                     echo '<td>' . $row['nome_produto'] . '</td>';
                     echo '<td>' . $row['valor'] . '</td>';
                     echo '<td>' . $row['quantidade'] . '</td>';
-                    echo '<td><a href="editar_produto.php?id='. $row['id'] . '">Editar</a> | <a href="deletar_produto.php?id='. $row['id'] . '">Deletar</a>';
+                    echo '<td><a href="editar_produto.php?id='. $row['id'] . '">Editar</a> | <a href="deletar_produto.php?id='. $row['id'] . '">Deletar</a> | <a href="adicionar_produto.php?id='. $row['id'] . '">Adicionar</a>';
                     echo '</tr>';
                 }
             }

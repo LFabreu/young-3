@@ -25,7 +25,6 @@ else
             header('Location: index.php');
         }
     }
-    echo 'oi';
 }
 
 ?>

@@ -41,3 +41,17 @@ table{
 th{
     padding-left: 70px;
 }
+
+
+
+.info-add{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.ab{
+    padding-top: 10px;
+}
