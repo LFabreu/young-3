@@ -1,3 +1,24 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == 'POST'){
+    include('../conexoes/conexao.php');
+    $user = $_POST['user'];
+    $senha = $_POST['password'];
+
+    $sql = "INSERT INTO users (id, user ,senha) VALUES (NULL, '$user' ,'$senha')";
+
+    if($mysqli->query($sql) == TRUE){
+        header("Location: painel.php");
+        exit();
+    }
+    else{
+        echo 'deu ruim' . $mysqli->error;
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +32,17 @@
         <h1>
             Bem Vindo a WishList
         </h1>
-        <a href="cadastro.php">
-            cadastrar
+        <a href="index.php">
+            Já possui Login?
         </a>
     </nav>
     <main>
-
+        
         <div class="conteiner">
             <h1>
-                Tela de Login
+                Tela de Cadastro
             </h1>
-            <form action="verificar.php" method="post">
+            <form method="post">
                 <div>
                     <label for="user">Nome do usuário</label>
                     <input type="text" name="user" id="user" required>
@@ -37,4 +58,3 @@
         </div>
     </main>
 </body>
-</html>

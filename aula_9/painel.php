@@ -4,7 +4,6 @@ include('../conexoes/conexao.php');
 session_start();
 $sql = 'SELECT * FROM produtos';
 $resultado = $mysqli->query($sql);
-$nome_user = $_SESSION['user']
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ $nome_user = $_SESSION['user']
     <main>
         <nav class="barra_navegacao">
             <h1>
-                Bem Vindo a WishList, <?php echo $nome_user; ?>
+                Bem Vindo a WishList
             </h1>
             <a href="logout.php">
                 LOGOUT
@@ -31,7 +30,7 @@ $nome_user = $_SESSION['user']
                 <th>Nome</th>
                 <th>Valor</th>
                 <th>Quantidade</th>
-                <th>Ações</th>
+                <th><a href="editar_produto.php?id='. $row['id'] . '">Editar</a> | <a href="deletar_produto.php?id='. $row['id'] . '">Deletar</a> | <a href="adicionar_produto.php?id='. $row['id'] . '">Adicionar</a>'</th>
             </tr>
             <div class="tabela-info">
                 <?php
@@ -42,7 +41,7 @@ $nome_user = $_SESSION['user']
                     echo '<td>' . $row['nome_produto'] . '</td>';
                     echo '<td>' . $row['valor'] . '</td>';
                     echo '<td>' . $row['quantidade'] . '</td>';
-                    echo '<td><a href="editar_produto.php?id='. $row['id'] . '">Editar</a> | <a href="deletar_produto.php?id='. $row['id'] . '">Deletar</a> | <a href="adicionar_produto.php?id='. $row['id'] . '">Adicionar</a>';
+                    echo '<td>';
                     echo '</tr>';
                 }
             }

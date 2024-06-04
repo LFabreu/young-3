@@ -92,8 +92,11 @@ else{
                 exit();
             }
             else{
-                header('Location: index.php');
+                header('Location: cadastro.php');
             }
+        }
+        else{
+            header('Location: cadastro.php');
         }
     }
 }

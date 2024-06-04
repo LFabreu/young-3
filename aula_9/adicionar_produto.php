@@ -6,7 +6,6 @@ if($_SERVER["REQUEST_METHOD"] == 'GET')
 {
     $sql = 'SELECT * FROM produtos';
     $resultado = $mysqli->query($sql);
-    $nome_user = $_SESSION['user'];
 }
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
@@ -43,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 <body>
     <nav class="barra_navegacao">
         <h1>
-            Bem Vindo a WishList, <?php echo $nome_user; ?>
+            Bem Vindo a WishList
         </h1>
         <a href="logout.php">
             LOGOUT
